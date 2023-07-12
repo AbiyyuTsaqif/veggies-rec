@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
-      title: 'Stavax',
+      title: 'veggies',
       theme: ThemeData(fontFamily: 'Poppins'),
       home: FoodDetail(),
     );

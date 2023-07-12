@@ -30,7 +30,7 @@ class _FoodDetailState extends State<FoodDetail> {
                   top: 33,
                   right: 38,
                 ),
-                height: 600,
+                height: 550,
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,12 +72,98 @@ class _FoodDetailState extends State<FoodDetail> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(right: 12),
-                            padding: EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 10, top: 10),
                             width: 150,
                             height: 234,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [], // lanjut lagi disini
+                              children: [
+                                Container(
+                                  width: 52,
+                                  height: 57,
+                                  child: ImageIcon(
+                                    AssetImage(
+                                      'assets/icon/1.png',
+                                    ),
+                                    color: Colors.white,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(9),
+                                    color: Color(0xff32463f),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 85,
+                                ),
+                                Text(
+                                  "Level",
+                                  style: TextStyle(
+                                    color: Color(0xFF2E2E2E),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "Medium",
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ], // lanjut lagi disini
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              color: Color(0xff77958a),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 12),
+                            padding: EdgeInsets.only(left: 10, top: 10),
+                            width: 150,
+                            height: 234,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 52,
+                                  height: 57,
+                                  child: ImageIcon(
+                                    AssetImage(
+                                      'assets/icon/2.png',
+                                    ),
+                                    color: Colors.white,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(9),
+                                    color: Color(0xff32463f),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 85,
+                                ),
+                                Text(
+                                  "Time avg",
+                                  style: TextStyle(
+                                    color: Color(0xFF2E2E2E),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "30-40m",
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ], // lanjut lagi disini
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(18),
