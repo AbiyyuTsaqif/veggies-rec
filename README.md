@@ -1,6 +1,6 @@
-# veggies
+# veggies rec app
 
-A new Flutter project.
+just a simple app that recommends you some healthy food to eat!
 
 ## Getting Started
 
