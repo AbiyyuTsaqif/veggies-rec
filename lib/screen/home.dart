@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:veggies/model/food.dart';
+import 'package:veggies/screen/food_detail.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
-
   @override
   State<home> createState() => _homeState();
 }
@@ -26,17 +27,15 @@ class _homeState extends State<home> {
               color: Color(0xff31463e),
             ),
           ),
-          ListView(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
-            scrollDirection: Axis.vertical,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 38,
-                  ),
-                  Text(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 38),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
                     "Hi there!",
                     style: TextStyle(
                       color: Colors.white,
@@ -44,33 +43,37 @@ class _homeState extends State<home> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    "Lets find your fav Veggies!",
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    "Let's find your fav Veggies!",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  SizedBox(
-                    height: 21,
+                ),
+                SizedBox(height: 21),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: searchBox(),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: foodList_list.length,
+                    itemBuilder: (context, index) {
+                      if (index >= foodList_list.length) {
+                        return Container();
+                      }
+                      final foodList list = foodList_list[index];
+                      return _foodList(inifoodlist: list);
+                    },
                   ),
-                  searchBox(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  _foodlist(),
-                  _foodlist(),
-                  _foodlist(),
-                  _foodlist(),
-                  _foodlist(),
-                  _foodlist(),
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -81,13 +84,19 @@ class _homeState extends State<home> {
     return AppBar(
       backgroundColor: Color(0xff31463e),
       elevation: 0,
+      automaticallyImplyLeading: false,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.menu,
-            color: Colors.white,
-            size: 30,
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           Icon(
             Icons.person,
@@ -106,6 +115,7 @@ class _homeState extends State<home> {
         color: Color(0xff4a5d56),
       ),
       child: const TextField(
+        style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(4),
           prefixIcon: Icon(
@@ -127,60 +137,131 @@ class _homeState extends State<home> {
     );
   }
 
-  Widget _foodlist() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
-      padding: EdgeInsets.symmetric(horizontal: 11),
-      // width: 326,
-      height: 110,
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 18,
-                ),
-                Text(
-                  "Ultimate Sautéed Vegetables",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+  // Widget _foodlist() {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 8),
+  //     padding: EdgeInsets.symmetric(horizontal: 11),
+  //     // width: 326,
+  //     height: 110,
+  //     child: Row(
+  //       children: [
+  //         Expanded(
+  //           child: Column(
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: [
+  //               SizedBox(
+  //                 height: 18,
+  //               ),
+  //               Text(
+  //                 widget.inifood.foodname,
+  //                 style: TextStyle(
+  //                   fontSize: 14,
+  //                   fontWeight: FontWeight.w600,
+  //                 ),
+  //               ),
+  //               SizedBox(
+  //                 height: 10,
+  //               ),
+  //               Flexible(
+  //                 child: Text(
+  //                   widget.inifood.desc,
+  //                   style: TextStyle(
+  //                     color: Color.fromARGB(255, 36, 36, 36),
+  //                     fontSize: 9,
+  //                     fontWeight: FontWeight.w600,
+  //                   ),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //         SizedBox(
+  //           width: 15,
+  //         ),
+  //         ClipRRect(
+  //           borderRadius: BorderRadius.circular(15),
+  //           child: Image.asset(
+  //             widget.inifood.image,
+  //             width: 76,
+  //             height: 97,
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(11),
+  //       color: Color(0xff77948a),
+  //     ),
+  //   );
+  // }
+}
+
+class _foodList extends StatelessWidget {
+  final foodList inifoodlist;
+  const _foodList({Key? key, required this.inifoodlist}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FoodDetail(inifood: inifoodlist);
+        }));
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 11),
+        // width: 326,
+        height: 110,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 18,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Flexible(
-                  child: Text(
-                    "Think of that pile of limp zucchini and carrots you might eat at a wedding buffet. So why don’t we do a total makeover on the old veggie saute?",
+                  Text(
+                    inifoodlist.foodname,
                     style: TextStyle(
-                      color: Color.fromARGB(255, 36, 36, 36),
-                      fontSize: 9,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Flexible(
+                    child: Text(
+                      inifoodlist.desc,
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 36, 36, 36),
+                        fontSize: 9,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            width: 15,
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              'assets/1.png',
-              width: 76,
-              height: 97,
+            SizedBox(
+              width: 15,
             ),
-          )
-        ],
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(11),
-        color: Color(0xff77948a),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.asset(
+                inifoodlist.image,
+                width: 76,
+                height: 97,
+              ),
+            )
+          ],
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(11),
+          color: Color(0xff77948a),
+        ),
       ),
     );
   }

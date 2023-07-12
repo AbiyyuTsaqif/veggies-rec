@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'veggies',
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: FoodDetail(),
+      home: login(),
     );
   }
 }

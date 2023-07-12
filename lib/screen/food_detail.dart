@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:veggies/model/food.dart';
 
 class FoodDetail extends StatefulWidget {
-  const FoodDetail({Key? key}) : super(key: key);
+  final foodList inifood;
+  const FoodDetail({Key? key, required this.inifood}) : super(key: key);
 
   @override
   State<FoodDetail> createState() => _FoodDetailState();
@@ -16,7 +18,7 @@ class _FoodDetailState extends State<FoodDetail> {
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
-          Image.asset('assets/1.png'),
+          Image.asset(widget.inifood.image),
           Align(
             alignment: Alignment.bottomCenter,
             child: ClipRRect(
@@ -36,7 +38,7 @@ class _FoodDetailState extends State<FoodDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Ultimate Sautéed Vegetables",
+                      widget.inifood.foodname,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -48,7 +50,7 @@ class _FoodDetailState extends State<FoodDetail> {
                     ),
                     Flexible(
                       child: Text(
-                        "Sautéing is hands down the fastest way to cook vegetables. The word comes from the French word “to jump,” meaning that you’ll need to keep stirring or flipping the pan for the entire cook time. To sauté you’ll need a good skillet and a fat to use for cooking, typically either olive oil or butter.",
+                        widget.inifood.detail,
                         style: TextStyle(
                           color: Color(0xFF959595),
                           fontSize: 15,
@@ -188,12 +190,19 @@ class _FoodDetailState extends State<FoodDetail> {
     return AppBar(
       backgroundColor: Color.fromARGB(0, 0, 0, 0),
       elevation: 0,
+      automaticallyImplyLeading: false,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Colors.black,
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
         ],
       ),

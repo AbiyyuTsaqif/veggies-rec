@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:veggies/screen/home.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -11,7 +12,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 59, 77, 59),
+      backgroundColor: Color(0xff31463e),
       body: Stack(
         children: [
           Container(
@@ -46,18 +47,28 @@ class _loginState extends State<login> {
                 SizedBox(
                   height: 420,
                 ),
-                Container(
-                  width: 264,
-                  height: 42,
-                  child: Text("Get Started",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white)),
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 80),
-                  decoration: BoxDecoration(
-                    color: Color(0xff77958a),
-                    borderRadius: BorderRadius.circular(20),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => home(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 264,
+                    height: 42,
+                    child: Text("Get Started",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white)),
+                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 80),
+                    decoration: BoxDecoration(
+                      color: Color(0xff77958a),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                 ),
               ],
