@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:veggies/screen/food_detail.dart';
-import 'package:veggies/screen/home.dart';
 import 'package:veggies/screen/login.dart';
 
 void main() {

@@ -111,7 +111,7 @@ class _FoodDetailState extends State<FoodDetail> {
                                   height: 2,
                                 ),
                                 Text(
-                                  "Medium",
+                                  widget.inifood.level,
                                   style: TextStyle(
                                     fontSize: 28,
                                     fontWeight: FontWeight.w600,
@@ -161,7 +161,57 @@ class _FoodDetailState extends State<FoodDetail> {
                                   height: 2,
                                 ),
                                 Text(
-                                  "30-40m",
+                                  widget.inifood.timeavg,
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ], // lanjut lagi disini
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              color: Color(0xff77958a),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 12),
+                            padding: EdgeInsets.only(left: 10, top: 10),
+                            width: 150,
+                            height: 234,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 52,
+                                  height: 57,
+                                  child: ImageIcon(
+                                    AssetImage(
+                                      'assets/icon/3.png',
+                                    ),
+                                    color: Colors.white,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(9),
+                                    color: Color(0xff32463f),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 85,
+                                ),
+                                Text(
+                                  "Calories",
+                                  style: TextStyle(
+                                    color: Color(0xFF2E2E2E),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  widget.inifood.calories,
                                   style: TextStyle(
                                     fontSize: 28,
                                     fontWeight: FontWeight.w600,

@@ -12,21 +12,22 @@ class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff31463e),
       appBar: _buildAppBar(),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
-          Container(
-            // width: 390,
-            height: 520,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
-              color: Color(0xff31463e),
-            ),
-          ),
+          // Container(
+          //   width: 390,
+          //   height: double.infinity,
+          //   decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.only(
+          //       bottomLeft: Radius.circular(30),
+          //       bottomRight: Radius.circular(30),
+          //     ),
+          //     color: Color(0xff31463e),
+          //   ),
+          // ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Column(
@@ -136,64 +137,6 @@ class _homeState extends State<home> {
       ),
     );
   }
-
-  // Widget _foodlist() {
-  //   return Container(
-  //     margin: EdgeInsets.symmetric(vertical: 8),
-  //     padding: EdgeInsets.symmetric(horizontal: 11),
-  //     // width: 326,
-  //     height: 110,
-  //     child: Row(
-  //       children: [
-  //         Expanded(
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               SizedBox(
-  //                 height: 18,
-  //               ),
-  //               Text(
-  //                 widget.inifood.foodname,
-  //                 style: TextStyle(
-  //                   fontSize: 14,
-  //                   fontWeight: FontWeight.w600,
-  //                 ),
-  //               ),
-  //               SizedBox(
-  //                 height: 10,
-  //               ),
-  //               Flexible(
-  //                 child: Text(
-  //                   widget.inifood.desc,
-  //                   style: TextStyle(
-  //                     color: Color.fromARGB(255, 36, 36, 36),
-  //                     fontSize: 9,
-  //                     fontWeight: FontWeight.w600,
-  //                   ),
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         SizedBox(
-  //           width: 15,
-  //         ),
-  //         ClipRRect(
-  //           borderRadius: BorderRadius.circular(15),
-  //           child: Image.asset(
-  //             widget.inifood.image,
-  //             width: 76,
-  //             height: 97,
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(11),
-  //       color: Color(0xff77948a),
-  //     ),
-  //   );
-  // }
 }
 
 class _foodList extends StatelessWidget {
