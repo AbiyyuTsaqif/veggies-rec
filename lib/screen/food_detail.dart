@@ -18,7 +18,9 @@ class _FoodDetailState extends State<FoodDetail> {
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
-          Image.asset(widget.inifood.image),
+          Expanded(
+            child: Image.asset(widget.inifood.image),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: ClipRRect(

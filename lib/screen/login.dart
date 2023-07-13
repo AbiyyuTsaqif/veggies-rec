@@ -44,36 +44,42 @@ class _loginState extends State<login> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(
-                  height: 420,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => home(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 264,
-                    height: 42,
-                    child: Text("Get Started",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white)),
-                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 80),
-                    decoration: BoxDecoration(
-                      color: Color(0xff77958a),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ),
+                // SizedBox(
+                //   height: 380,
+                // ),
               ],
             ),
           ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => home(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: 264,
+                  height: 42,
+                  child: Text("Get Started",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white)),
+                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 80),
+                  decoration: BoxDecoration(
+                    color: Color(0xff77958a),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
